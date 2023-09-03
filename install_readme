@@ -47,3 +47,236 @@ contract Hello {
 
 
 
+
+
+npx hardhat console --network localhost
+Downloading compiler 0.8.19
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> contracts/Hello.sol
+
+
+Compiled 2 Solidity files successfully
+Welcome to Node.js v20.5.1.
+Type ".help" for more information.
+> const contract = await ethers.getContractFactory("Hello")
+undefined
+> const { ethers } = require("ethers");
+undefined
+> const provider = new ethers.WebSocketProvider("ws://localhost:8545")
+undefined
+> const cd = await contract.deploy()
+undefined
+> const filter = econtract.filters.myEventTest(null)
+Uncaught ReferenceError: econtract is not defined
+> const filter = cd.filters.myEventTest(null)
+Uncaught SyntaxError: Identifier 'filter' has already been declared
+> const filter2 = cd.filters.myEventTest(null)
+undefined
+> cd.on(filter2, (info) => {  console.log("info",info); });
+Promise {
+  <pending>,
+  [Symbol(async_id_symbol)]: 2435,
+  [Symbol(trigger_async_id_symbol)]: 13
+}
+> cd.set('hi')
+Promise {
+  <pending>,
+  [Symbol(async_id_symbol)]: 10916,
+  [Symbol(trigger_async_id_symbol)]: 13
+}
+> info ContractEventPayload {
+  filter: PreparedTopicFilter {
+    fragment: EventFragment {
+      type: 'event',
+      inputs: [Array],
+      name: 'myEventTest',
+      anonymous: false
+    }
+  },
+  emitter: BaseContract {
+    target: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    interface: Interface {
+      fragments: [Array],
+      deploy: [ConstructorFragment],
+      fallback: null,
+      receive: false
+    },
+    runner: HardhatEthersSigner {
+      _gasLimit: 30000000,
+      address: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+      provider: [HardhatEthersProvider]
+    },
+    filters: {},
+    fallback: null,
+    [Symbol(_ethersInternal_contract)]: {}
+  },
+  log: EventLog {
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'localhost',
+      _blockListeners: [Array],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: [Array],
+      _isHardhatNetworkCached: true,
+      _latestBlockNumberPolled: 2,
+      _blockPollingInterval: Timeout {
+        _idleTimeout: 50,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 169840,
+        _onTimeout: [AsyncFunction (anonymous)],
+        _timerArgs: undefined,
+        _repeat: 50,
+        _destroyed: false,
+        [Symbol(refed)]: true,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2600,
+        [Symbol(triggerId)]: 2562
+      }
+    },
+    transactionHash: '0x929a99ce4b95f94448333e4dacc34ccc3b2660fffe30e4703c11b224930ed345',
+    blockHash: '0xb6d813e69d3ae7471a7f946a4d1003fdd03b9d79ffaa3bf274d41c7a61a83355',
+    blockNumber: 2,
+    removed: false,
+    address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    data: '0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000026869000000000000000000000000000000000000000000000000000000000000',
+    topics: [
+      '0x319b9e64f64b033d6b8102f9688735cefac53d266b6e85d21cf85e9856fc7b99'
+    ],
+    index: 0,
+    transactionIndex: 0,
+    interface: Interface {
+      fragments: [Array],
+      deploy: [ConstructorFragment],
+      fallback: null,
+      receive: false
+    },
+    fragment: EventFragment {
+      type: 'event',
+      inputs: [Array],
+      name: 'myEventTest',
+      anonymous: false
+    },
+    args: Result(1) [ 'hi' ]
+  },
+  args: Result(1) [ 'hi' ],
+  fragment: EventFragment {
+    type: 'event',
+    inputs: [ [ParamType] ],
+    name: 'myEventTest',
+    anonymous: false
+  }
+}
+> cd.get()
+Promise {
+  <pending>,
+  [Symbol(async_id_symbol)]: 25868,
+  [Symbol(trigger_async_id_symbol)]: 13
+}
+> await cd.get()
+'hi'
+> cd.set('hiii')
+Promise {
+  <pending>,
+  [Symbol(async_id_symbol)]: 103200,
+  [Symbol(trigger_async_id_symbol)]: 13
+}
+> info ContractEventPayload {
+  filter: PreparedTopicFilter {
+    fragment: EventFragment {
+      type: 'event',
+      inputs: [Array],
+      name: 'myEventTest',
+      anonymous: false
+    }
+  },
+  emitter: BaseContract {
+    target: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    interface: Interface {
+      fragments: [Array],
+      deploy: [ConstructorFragment],
+      fallback: null,
+      receive: false
+    },
+    runner: HardhatEthersSigner {
+      _gasLimit: 30000000,
+      address: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+      provider: [HardhatEthersProvider]
+    },
+    filters: {},
+    fallback: null,
+    [Symbol(_ethersInternal_contract)]: {}
+  },
+  log: EventLog {
+    provider: HardhatEthersProvider {
+      _hardhatProvider: [LazyInitializationProviderAdapter],
+      _networkName: 'localhost',
+      _blockListeners: [Array],
+      _transactionHashListeners: Map(0) {},
+      _eventListeners: [Array],
+      _isHardhatNetworkCached: true,
+      _latestBlockNumberPolled: 3,
+      _blockPollingInterval: Timeout {
+        _idleTimeout: 50,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 267486,
+        _onTimeout: [AsyncFunction (anonymous)],
+        _timerArgs: undefined,
+        _repeat: 50,
+        _destroyed: false,
+        [Symbol(refed)]: true,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2600,
+        [Symbol(triggerId)]: 2562
+      }
+    },
+    transactionHash: '0x5a2a81504960bd4aa0a931b2d91be7825d992360ab8054c88095f0a11ce8152d',
+    blockHash: '0x11b4b4a06f5c0cb402866c3b91adfec037994e9744ea07a5f2d7f3bcc20dac56',
+    blockNumber: 3,
+    removed: false,
+    address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    data: '0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000046869696900000000000000000000000000000000000000000000000000000000',
+    topics: [
+      '0x319b9e64f64b033d6b8102f9688735cefac53d266b6e85d21cf85e9856fc7b99'
+    ],
+    index: 0,
+    transactionIndex: 0,
+    interface: Interface {
+      fragments: [Array],
+      deploy: [ConstructorFragment],
+      fallback: null,
+      receive: false
+    },
+    fragment: EventFragment {
+      type: 'event',
+      inputs: [Array],
+      name: 'myEventTest',
+      anonymous: false
+    },
+    args: Result(1) [ 'hiii' ]
+  },
+  args: Result(1) [ 'hiii' ],
+  fragment: EventFragment {
+    type: 'event',
+    inputs: [ [ParamType] ],
+    name: 'myEventTest',
+    anonymous: false
+  }
+}
+
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+>
+ubuntu@ip-172-31-47-223:~/test$ ^C
+ubuntu@ip-172-31-47-223:~/test$ ^C
+ubuntu@ip-172-31-47-223:~/test$ npx hardhat console --network localhost
+Welcome to Node.js v20.5.1.
+Type ".help" for more information.
+>
+
+
+
+
+
+
+
