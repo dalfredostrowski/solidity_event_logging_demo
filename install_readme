@@ -48,6 +48,8 @@ contract Hello {
 
 
 
+npx hardhat node --hostname localhost    # make sure to run as localhost vs the dns
+
 
 npx hardhat console --network localhost
 Downloading compiler 0.8.19
