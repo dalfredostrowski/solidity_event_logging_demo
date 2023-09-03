@@ -276,6 +276,117 @@ Type ".help" for more information.
 
 
 
+## view the transaction log ..
+
+
+npx hardhat console --network localhost
+
+
+
+
+> const contract = await ethers.getContractFactory("Hello")
+
+> const signers = await ethers.getSigners();
+
+> const bal = await ethers.provider.getBalance(signers[0])
+
+> const cd = await contract.deploy()
+
+
+
+> await cd.set('aaa')
+
+> await cd.get()
+
+
+# make sure I am under the artifact directory....
+> const contractArtifact = JSON.parse(fs.readFileSync("Hello.json", 'utf8'));
+
+
+
+> iface = new ethers.Interface(contractArtifact.abi)
+
+
+> let tx = await cd.set('abaa')
+
+let tx = await cd.set('abaa')
+
+> iface
+Interface {
+  fragments: [
+    EventFragment {
+      type: 'event',
+      inputs: [Array],
+      name: 'myEventTest',
+      anonymous: false
+    },
+    FunctionFragment {
+      type: 'function',
+      inputs: [],
+      name: 'get',
+      constant: true,
+      outputs: [Array],
+      stateMutability: 'view',
+      payable: false,
+      gas: null
+    },
+    FunctionFragment {
+      type: 'function',
+      inputs: [Array],
+      name: 'set',
+      constant: false,
+      outputs: [],
+      stateMutability: 'nonpayable',
+      payable: false,
+      gas: null
+    },
+    FunctionFragment {
+      type: 'function',
+      inputs: [],
+      name: 'storedData',
+      constant: true,
+      outputs: [Array],
+      stateMutability: 'view',
+      payable: false,
+      gas: null
+    }
+  ],
+  deploy: ConstructorFragment {
+    type: 'constructor',
+    inputs: [],
+    payable: false,
+    gas: null
+  },
+  fallback: null,
+  receive: false
+}
+
+
+> const txReceipt = await ethers.provider.getTransactionReceipt(tx.hash);
+
+
+> iface.parseLog(txReceipt.logs[0])
+
+
+
+
+> iface.parseLog(txReceipt.logs[0])
+LogDescription {
+  fragment: EventFragment {
+    type: 'event',
+    inputs: [ [ParamType] ],
+    name: 'myEventTest',
+    anonymous: false
+  },
+  name: 'myEventTest',
+  signature: 'myEventTest(string)',
+  topic: '0x319b9e64f64b033d6b8102f9688735cefac53d266b6e85d21cf85e9856fc7b99',
+  args: Result(1) [ 'abaa' ]
+}
+
+
+
+
 
 
 
