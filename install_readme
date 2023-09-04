@@ -416,6 +416,28 @@ Uncaught TypeError: ethers.getTransactionReceipt is not a function
 
 
 
+ npx hardhat console --network localhost
+Welcome to Node.js v20.5.1.
+Type ".help" for more information.
+> const contract = await ethers.getContractFactory("Hello")
+undefined
+> const cd = await contract.deploy()
+undefined
+> let tx = await cd.set('abaa')
+undefined
+> const txReceipt = await ethers.getTransactionReceipt(tx.hash);
+Uncaught TypeError: ethers.getTransactionReceipt is not a function
+    at REPL10:1:62
+> const txReceipt = await ethers.getTransactionRece
+> const txReceipt = await ethers.provider.getTransactionReceipt(tx.hash);
+Uncaught SyntaxError: Identifier 'txReceipt' has already been declared
+> const txReceipt2 = await ethers.provider.getTransactionReceipt(tx.hash);
+undefined
+
+
+works if i do not declare the ether.....
+> iface.parseLog(txReceipt2.logs[0])
+Uncaught ReferenceError: iface is not defined
 
 
 
