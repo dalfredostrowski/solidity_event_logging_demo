@@ -386,6 +386,33 @@ LogDescription {
   args: Result(1) [ 'abaa' ]
 }
 
+npx hardhat console --network localhost
+Welcome to Node.js v20.5.1.
+Type ".help" for more information.
+> const contract = await ethers.getContractFactory("Hello")
+undefined
+> const { ethers } = require("ethers");
+undefined
+> const cd = await contract.deploy()
+undefined
+> let tx = await cd.set('abaa')
+undefined
+> const txReceipt = await ethers.provider.getTransactionReceipt(tx.hash);
+Uncaught:
+TypeError: Cannot read properties of undefined (reading 'getTransactionReceipt')
+    at REPL5:1:71
+> tx.hash
+'0x5ed49d8685e0732172ec86b51923b56ccc59fa9b7cc769e94403f6a6729308c3'
+> await ethers.provider.getBalance(dp)
+Uncaught TypeError: Cannot read properties of undefined (reading 'getBalance')
+    at REPL32:1:55
+> const { ethers } = require("ethers");
+Uncaught SyntaxError: Identifier 'ethers' has already been declared
+> const txReceipt = await ethers.getTransactionReceipt(tx.hash);
+Uncaught SyntaxError: Identifier 'txReceipt' has already been declared
+> await ethers.getTransactionReceipt(tx.hash);
+Uncaught TypeError: ethers.getTransactionReceipt is not a function
+    at REPL37:1:46
 
 
 
