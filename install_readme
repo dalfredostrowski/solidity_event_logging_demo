@@ -51,6 +51,174 @@ contract Hello {
 npx hardhat node --hostname localhost    # make sure to run as localhost vs the dns
 
 
+Welcome to Node.js v20.5.1.
+Type ".help" for more information.
+>
+
+
+
+## view the transaction log ..
+
+
+npx hardhat console --network localhost
+
+
+
+
+> const contract = await ethers.getContractFactory("Hello")
+
+> const signers = await ethers.getSigners();
+
+> const bal = await ethers.provider.getBalance(signers[0])
+
+> const cd = await contract.deploy()
+
+
+
+> await cd.set('aaa')
+
+> await cd.get()
+
+
+# make sure I am under the artifact directory....
+> const contractArtifact = JSON.parse(fs.readFileSync("Hello.json", 'utf8'));
+
+
+
+> iface = new ethers.Interface(contractArtifact.abi)
+
+
+> let tx = await cd.set('abaa')
+
+let tx = await cd.set('abaa')
+
+> iface
+Interface {
+  fragments: [
+    EventFragment {
+      type: 'event',
+      inputs: [Array],
+      name: 'myEventTest',
+      anonymous: false
+    },
+    FunctionFragment {
+      type: 'function',
+      inputs: [],
+      name: 'get',
+      constant: true,
+      outputs: [Array],
+      stateMutability: 'view',
+      payable: false,
+      gas: null
+    },
+    FunctionFragment {
+      type: 'function',
+      inputs: [Array],
+      name: 'set',
+      constant: false,
+      outputs: [],
+      stateMutability: 'nonpayable',
+      payable: false,
+      gas: null
+    },
+    FunctionFragment {
+      type: 'function',
+      inputs: [],
+      name: 'storedData',
+      constant: true,
+      outputs: [Array],
+      stateMutability: 'view',
+      payable: false,
+      gas: null
+    }
+  ],
+  deploy: ConstructorFragment {
+    type: 'constructor',
+    inputs: [],
+    payable: false,
+    gas: null
+  },
+  fallback: null,
+  receive: false
+}
+
+
+> const txReceipt = await ethers.provider.getTransactionReceipt(tx.hash);
+
+
+> iface.parseLog(txReceipt.logs[0])
+
+
+
+
+> iface.parseLog(txReceipt.logs[0])
+LogDescription {
+  fragment: EventFragment {
+    type: 'event',
+    inputs: [ [ParamType] ],
+    name: 'myEventTest',
+    anonymous: false
+  },
+  name: 'myEventTest',
+  signature: 'myEventTest(string)',
+  topic: '0x319b9e64f64b033d6b8102f9688735cefac53d266b6e85d21cf85e9856fc7b99',
+  args: Result(1) [ 'abaa' ]
+}
+
+npx hardhat console --network localhost
+Welcome to Node.js v20.5.1.
+Type ".help" for more information.
+> const contract = await ethers.getContractFactory("Hello")
+undefined
+> const { ethers } = require("ethers");
+undefined
+> const cd = await contract.deploy()
+undefined
+> let tx = await cd.set('abaa')
+undefined
+> const txReceipt = await ethers.provider.getTransactionReceipt(tx.hash);
+Uncaught:
+TypeError: Cannot read properties of undefined (reading 'getTransactionReceipt')
+    at REPL5:1:71
+> tx.hash
+'0x5ed49d8685e0732172ec86b51923b56ccc59fa9b7cc769e94403f6a6729308c3'
+> await ethers.provider.getBalance(dp)
+Uncaught TypeError: Cannot read properties of undefined (reading 'getBalance')
+    at REPL32:1:55
+> const { ethers } = require("ethers");
+Uncaught SyntaxError: Identifier 'ethers' has already been declared
+> const txReceipt = await ethers.getTransactionReceipt(tx.hash);
+Uncaught SyntaxError: Identifier 'txReceipt' has already been declared
+> await ethers.getTransactionReceipt(tx.hash);
+Uncaught TypeError: ethers.getTransactionReceipt is not a function
+    at REPL37:1:46
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 npx hardhat console --network localhost
 Downloading compiler 0.8.19
 Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
