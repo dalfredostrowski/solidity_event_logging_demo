@@ -196,6 +196,8 @@ Type ".help" for more information.
 undefined
 > const { ethers } = require("ethers");
 undefined
+
+# NOTE: provider definition not necessary for this specific example
 > const provider = new ethers.WebSocketProvider("ws://localhost:8545")
 undefined
 > const cd = await contract.deploy()
