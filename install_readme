@@ -194,12 +194,9 @@ Welcome to Node.js v20.5.1.
 Type ".help" for more information.
 > const contract = await ethers.getContractFactory("Hello")
 undefined
-> const { ethers } = require("ethers");
-undefined
 
-# NOTE: provider definition not necessary for this specific example
-> const provider = new ethers.WebSocketProvider("ws://localhost:8545")
-undefined
+# NOTE: (past command ) provider definition not necessary for this specific example
+
 > const cd = await contract.deploy()
 undefined
 
